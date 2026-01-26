@@ -4,7 +4,7 @@
 
 This repository documents my learning journey with React through a Udemy course.
 
-It contains small projects, exercises, and learning notes created while studying core React concepts.  
+It contains small projects, exercises, and notes created while studying core React concepts.  
 The repository is continuously updated as I progress through the course.
 
 ## 📖 What I've learned so far
@@ -20,9 +20,9 @@ The repository is continuously updated as I progress through the course.
 
 ## 💻 Code environment
 
-For this course I used *VSCode* with *Vite* as my setup!
-For that I did:
-- open terminal
+For this course, I used *VSCode* with *Vite* as my setup!
+To set it up, I did the following:
+- open the terminal
 - npm create vite@latest my-app
 - select 'React'
 - select 'JavaScript'
@@ -48,13 +48,13 @@ React code does not run directly in the browser.
 JSX (JavaScript Syntax Extension) is used to describe the UI structure and is transformed into JavaScript during the build process.
 
 - {} in JSX allows embedding dynamic JavaScript expressions
-- JSX is not a default JavaScript feature
+- JSX is not a built-in JS feature
 
 ### Component Function rules
-1. Function name must start with an uppercase
-2. Multi-word should be written in PascalCase
+1. Function names must start with an uppercase
+2. Multi-word component name should be written in PascalCase
 
-Images should be used with import, for a better build and deployment
+Images should be imported for better build and deployment handling!
 
 Instead of "<CoreConcept 
               title={CORE_CONCEPTS[1].title} 
@@ -67,11 +67,13 @@ The CSS from each component should be on the components folder and imported into
 
 ### Props & Children
 
-props.children (or {children}) is a property of React, so it can use the text between tags of component
+props.children (or {children}) is a property of React, so it can access the text between opening and closing tags
 
 ### Event Handling
 
-()=> nameOfTheFunction() to pass params to the function - nameOfTheFunction. *This will not execute the function when the page is loaded*
+Use ()=> nameOfTheFunction() to pass params to a function - nameOfTheFunction. *This prevents the function from executing immediately when the component renders*
+
+During events, when we want to use the vanilla JS !(variable) we need to remember that react batches state updates. So, to update immediattely, we use, for example: setEditing((editing)=> !editing)
 
 ### State & Re-rendering
 React does not automatically track UI changes. State is used to tell React when to re-render.
@@ -89,4 +91,14 @@ When using states, we can want to present something before the click, for that, 
 
 #### Rendering Lists
 
-To output dynamically components based on an array we must use the map function, on the array that has the data. Example: {CORE_CONCEPTS.map((conceptItem => <CoreConcept key={conceptItem.title} {...conceptItem}/>))}
+To dynamically output components based on an array we must use the map function on the array that has the data. Example: {CORE_CONCEPTS.map((conceptItem => <CoreConcept key={conceptItem.title} {...conceptItem}/>))}
+
+When updating an object or array, we should not mutate them directly, instead, create a copy first. Example:
+- const updateUser = {...user}
+- updateUser.name = 'Max'
+
+### Fragments
+ This component can be used instead of the div tag (on the return) Showing only the elements inside, without unnecessary tag div.
+ Fragment -> <></>
+
+How to use it? Change the div on the return for *Fragment*
