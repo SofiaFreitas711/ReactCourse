@@ -1,14 +1,26 @@
 # About Styling
 
-Although we import a certain style onto one component, the css will apply to all the same that follow the same rule. Why? Because it's injected onto the head tag.
+## Vanilla CSS
+### Global CSS
+Even if a CSS file is imported into a single component, its styles apply globally to all elements that match the same selectors.  
+This happens because the CSS is injected into the `<head>` of the document.
 
-To pass style we use inline style using dynamic {} with an object insde. For example: style={{color: "red"}}
+### Inline Styles
+Inline styles are passed using the `style` prop with a JavaScript object inside curly braces.
 
-Modules of CSS turn styles onto unique names
+Example: style={{ color: "red" }}
 
-We must be carefull about the props when using styled-components. If already exists whe can usa $ before the prop. Example: <Input $invalid={emailNotValid}>
+### CSS Modules
+CSS Modules automatically scope styles by generating unique class names, preventing global style collisions.
 
-We can use nested CSS atributes onto the styled component, changing the tag being created inside the CSS for &
+### Styled components
+When using styled-components, be careful with props:
+- If a prop name already exists on a DOM element, prefix it with $ to prevent it from being passed to the DOM.
+
+Example: <Input $invalid={emailNotValid} />
+
+### Nested Styles
+Styled-components allow nested CSS using & to target elements created inside the component.
 Example:
 const StyledHeader = styled.header`
   display: flex;
@@ -51,3 +63,6 @@ const StyledHeader = styled.header`
     }
   }
 `
+
+## TailwindCSS
+Tailwind styles are applied using utility classes via the className prop.
